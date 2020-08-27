@@ -22,12 +22,18 @@ namespace TestApp
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
 
-            FragmentTransaction fragment = this.FragmentManager.BeginTransaction();
-            ActivityContetnMainClass _orderClass = new ActivityContetnMainClass();
-            fragment.Replace(Resource.Id.fragment, _orderClass);
-            fragment.AddToBackStack(null);
-            fragment.Commit();
-
+            try
+            {
+                FragmentTransaction fragment = this.FragmentManager.BeginTransaction();
+                ActivityContetnMainClass _orderClass = new ActivityContetnMainClass();
+                fragment.Replace(Resource.Id.fragment, _orderClass);
+                fragment.AddToBackStack(null);
+                fragment.Commit();
+            }
+            catch (Exception)
+            {
+                Toast.MakeText(this, "Ошибка перехода на страницу", ToastLength.Long);
+            }
         }
 
 

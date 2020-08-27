@@ -56,8 +56,11 @@
             android:inputType="textMultiLine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="50dp"
+            android:textAlignment="center"
             android:background="@drawable/activity_style"
             android:padding="10dp"  
+            android:textSize="15sp"
             android:id="@+id/TextCloudAccessOptions" />
         <TextView
             android:text="Команда"
@@ -69,8 +72,11 @@
             android:inputType="textMultiLine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="50dp"
+            android:textAlignment="center"
             android:background="@drawable/activity_style"
             android:padding="10dp"  
+            android:textSize="15sp"
             android:id="@+id/TextCommand" />
     </LinearLayout>
     <LinearLayout

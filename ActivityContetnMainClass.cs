@@ -32,12 +32,18 @@ namespace TestApp
 
         private void BtnAuthClick(object sender, EventArgs e)
         {
-            FragmentTransaction fragment = this.FragmentManager.BeginTransaction();
-            OrdersClass _orderClass = new OrdersClass();
-            fragment.Replace(Resource.Id.fragment, _orderClass);
-            fragment.AddToBackStack(null);
-            fragment.Commit();
+            try
+            {
+                FragmentTransaction fragment = this.FragmentManager.BeginTransaction();
+                BoxStateClass _orderClass = new BoxStateClass();
+                fragment.Replace(Resource.Id.fragment, _orderClass);
+                fragment.AddToBackStack(null);
+                fragment.Commit();
+            }
+            catch (Exception)
+            {
+                Toast.MakeText(Activity, "", ToastLength.Long);
+            }
         }
-
     }
 }
