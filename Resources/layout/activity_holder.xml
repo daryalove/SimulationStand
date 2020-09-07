@@ -1,0 +1,103 @@
+﻿<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:padding="10dp"
+	android:layout_height="match_parent">
+
+	<android.support.v7.widget.CardView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:cardElevation="20dp"
+		app:cardCornerRadius="6dp">
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="5dp"
+			android:orientation="vertical">
+		
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="10dp"
+				android:orientation="horizontal">
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1">
+					<TextView
+						android:id="@+id/NumberContainer"						
+						android:layout_width="match_parent"
+						android:layout_weight="3"
+						android:textColor="#B3B5B5"
+						android:gravity="center"
+						android:layout_height="match_parent"/>
+					<ImageView
+						android:src="@drawable/containerFolded"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_weight="1"
+						android:id="@+id/ImageContainer" />
+
+				</LinearLayout>
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_weight="1"
+					android:layout_height="wrap_content"
+					android:stateListAnimator="@null"
+					android:translationZ="4dp"
+					android:orientation="horizontal"
+					android:showDividers="middle" >
+
+					<Button
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="@string/fold"
+						android:textSize="8dp"
+						android:layout_weight="1"
+						android:id="@+id/ContainerFold"
+						android:background="@drawable/Left_Button_NoPress"
+						android:textColor="#FFFFFF" />
+
+					<Button
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="@string/unfold"
+						android:textSize="8dp"
+						android:layout_weight="1"
+						android:id="@+id/ContainerUnfold"
+						android:background="@drawable/Right_Button_NoPress"
+						android:textColor="#FFFFFF" />
+
+
+				</LinearLayout>
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:padding="10dp">
+
+				<Button
+					android:text="Стоп"
+					android:layout_marginTop="10dp"
+					android:layout_marginLeft="20dp"
+					android:layout_marginRight="20dp"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textColor="#FFFFFF"
+					android:background="@drawable/Stop_Button"
+					android:id="@+id/StopButton" />
+				
+
+			</LinearLayout>
+		
+		</LinearLayout>		
+
+	</android.support.v7.widget.CardView>
+
+</RelativeLayout>

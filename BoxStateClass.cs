@@ -6,6 +6,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 
@@ -13,6 +14,8 @@ namespace TestApp
 {
     public class BoxStateClass : Fragment
     {
+        private ListView listView;
+
         private RadioButton firstBox { get; set; }
         private RadioButton secondBox { get; set; }
         private EditText CloudAccessText { get; set; }
@@ -29,48 +32,52 @@ namespace TestApp
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            return inflater.Inflate(Resource.Layout.activity_order_class, container, false);
+            return inflater.Inflate(Resource.Layout.activity_order_list, container, false);
         }
 
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
             base.OnViewCreated(view, savedInstanceState);
+            listView = view.FindViewById<ListView>(Resource.Id.ListViewOrders);
 
-            firstBox = view.FindViewById<RadioButton>(Resource.Id.RbtnFirstOrder);
-            secondBox = view.FindViewById<RadioButton>(Resource.Id.RbtnSecondOrder);
-            CloudAccessText = view.FindViewById<EditText>(Resource.Id.TextCloudAccessOptions);
-            CommandText = view.FindViewById<EditText>(Resource.Id.TextCommand);
-            Btn_Sending_Command = view.FindViewById<Button>(Resource.Id.ButtonSendCommand);
+            BoxStateAdapter adapter = new BoxStateAdapter(Activity, this.FragmentManager);
+            listView.Adapter = adapter;
 
-            CloudAccessText.Text = topic;
-            CommandText.Text = "0";
+            //firstBox = view.FindViewById<RadioButton>(Resource.Id.RbtnFirstOrder);
+            //secondBox = view.FindViewById<RadioButton>(Resource.Id.RbtnSecondOrder);
+            //CloudAccessText = view.FindViewById<EditText>(Resource.Id.TextCloudAccessOptions);
+            //CommandText = view.FindViewById<EditText>(Resource.Id.TextCommand);
+            //Btn_Sending_Command = view.FindViewById<Button>(Resource.Id.ButtonSendCommand);
 
-            var client_data = new MQTTClient()
-            {
-                ClientId = "ESP32AndroidReleaseClient",
-                Password = mqttPassword,
-                Port = mqttPort,
-                Server = mqttServer,
-                UserName = mqttUserName
-            };
+            //CloudAccessText.Text = topic;
+            //CommandText.Text = "0";
 
-            mQTT = new MQTTService(client_data, Activity);
+            //var client_data = new MQTTClient()
+            //{
+            //    ClientId = "ESP32AndroidReleaseClient",
+            //    Password = mqttPassword,
+            //    Port = mqttPort,
+            //    Server = mqttServer,
+            //    UserName = mqttUserName
+            //};
 
-            firstBox.Click += delegate
-            {
-                topic = "mashtgbr/esp/led";
-                CloudAccessText.Text = topic;
-                CommandText.Text = "0";
-            };
+            //mQTT = new MQTTService(client_data, Activity);
 
-            secondBox.Click += delegate
-            {
-                topic = "mashtgbr/esp/led2";
-                CloudAccessText.Text = topic;
-                CommandText.Text = "0";
-            };
+            //firstBox.Click += delegate
+            //{
+            //    topic = "mashtgbr/esp/led";
+            //    CloudAccessText.Text = topic;
+            //    CommandText.Text = "0";
+            //};
 
-            Btn_Sending_Command.Click += BtnSendingCommand;
+            //secondBox.Click += delegate
+            //{
+            //    topic = "mashtgbr/esp/led2";
+            //    CloudAccessText.Text = topic;
+            //    CommandText.Text = "0";
+            //};
+
+           //Btn_Sending_Command.Click += BtnSendingCommand;
 
             //AlertDialog.Builder alert = new AlertDialog.Builder(Activity);
             //alert.SetTitle("Статус соединения с облаком");
