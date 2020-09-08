@@ -40,7 +40,18 @@ namespace TestApp
             base.OnViewCreated(view, savedInstanceState);
             listView = view.FindViewById<ListView>(Resource.Id.ListViewOrders);
 
-            BoxStateAdapter adapter = new BoxStateAdapter(Activity, this.FragmentManager);
+            var client_data = new MQTTClient()
+            {
+                ClientId = "ESP32AndroidReleaseClient",
+                Password = mqttPassword,
+                Port = mqttPort,
+                Server = mqttServer,
+                UserName = mqttUserName
+            };
+
+            mQTT = new MQTTService(client_data, Activity);
+
+            BoxStateAdapter adapter = new BoxStateAdapter(Activity, this.FragmentManager, mQTT);
             listView.Adapter = adapter;
 
             //firstBox = view.FindViewById<RadioButton>(Resource.Id.RbtnFirstOrder);
@@ -51,17 +62,6 @@ namespace TestApp
 
             //CloudAccessText.Text = topic;
             //CommandText.Text = "0";
-
-            //var client_data = new MQTTClient()
-            //{
-            //    ClientId = "ESP32AndroidReleaseClient",
-            //    Password = mqttPassword,
-            //    Port = mqttPort,
-            //    Server = mqttServer,
-            //    UserName = mqttUserName
-            //};
-
-            //mQTT = new MQTTService(client_data, Activity);
 
             //firstBox.Click += delegate
             //{
@@ -77,7 +77,7 @@ namespace TestApp
             //    CommandText.Text = "0";
             //};
 
-           //Btn_Sending_Command.Click += BtnSendingCommand;
+            //Btn_Sending_Command.Click += BtnSendingCommand;
 
             //AlertDialog.Builder alert = new AlertDialog.Builder(Activity);
             //alert.SetTitle("Статус соединения с облаком");

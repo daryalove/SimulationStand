@@ -2,5 +2,6 @@
     <string name="app_name">TestApp</string>
     <string name="action_settings">Settings</string>
 	<string name="fold">Сложить</string>
+  <string name="title_home">Управление макетом</string>
 	<string name="unfold">Разложить</string>
 </resources>
